@@ -24,7 +24,7 @@ $white: hsl(0, 0%, 100%);
 }
 
 :root {
-	font-size: 14px;
+	font-size: 16px;
 	font-family: 'Space Mono', monospace;
 }
 
@@ -33,7 +33,7 @@ body {
 	min-height: 100vh;
 	margin: 0;
 	padding: 0;
-	@include flexbox(column, center, center, 0);
+	@include flexbox(column, space-evenly, center, 0);
 
 	.heading {
 		text-transform: uppercase;
@@ -44,7 +44,7 @@ body {
 	}
 
 	.calculator-container {
-		max-width: 700px;
+		max-width: 800px;
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		padding: 20px;
@@ -52,7 +52,7 @@ body {
 		border-radius: 10px;
 
 		.input-container {
-			@include flexbox(column, center, stretch, 10px);
+			@include flexbox(column, center, stretch, 20px);
 			padding: 20px;
 
 			.input-row {
@@ -60,7 +60,7 @@ body {
 					@include flexbox(row, space-between, center, 0);
 					flex-wrap: wrap;
 					font-weight: 700;
-					font-size: 0.8rem;
+					font-size: 1.1rem;
 					margin-bottom: 5px;
 
 					.input-title {
@@ -80,7 +80,7 @@ body {
 						background-color: $light-grayish-cyan-1;
 						border-radius: 5px;
 						border: 2px solid $light-grayish-cyan-1;
-						font-size: 1.2rem;
+						font-size: 1.5rem;
 						font-family: inherit;
 						font-weight: 700;
 						color: $very-dark-cyan;
@@ -192,7 +192,7 @@ body {
 			background-color: $very-dark-cyan;
 			border-radius: 10px;
 			color: $light-grayish-cyan-1;
-			padding: 20px;
+			padding: 30px;
 
 			.output-rows {
 				@include flexbox(column, center, stretch, 20px);

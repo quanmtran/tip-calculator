@@ -7,7 +7,7 @@
 }
 
 :root {
-  font-size: 14px;
+  font-size: 16px;
   font-family: 'Space Mono', monospace;
 }
 
@@ -23,9 +23,9 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -41,7 +41,7 @@ body .heading {
 }
 
 body .calculator-container {
-  max-width: 700px;
+  max-width: 800px;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[2];
@@ -65,7 +65,7 @@ body .calculator-container .input-container {
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch;
-  gap: 10px;
+  gap: 20px;
   padding: 20px;
 }
 
@@ -87,7 +87,7 @@ body .calculator-container .input-container .input-row .input-heading {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   font-weight: 700;
-  font-size: 0.8rem;
+  font-size: 1.1rem;
   margin-bottom: 5px;
 }
 
@@ -108,7 +108,7 @@ body .calculator-container .input-container .input-row .input-box input {
   background-color: #f4fafa;
   border-radius: 5px;
   border: 2px solid #f4fafa;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-family: inherit;
   font-weight: 700;
   color: #00494d;
@@ -269,7 +269,7 @@ body .calculator-container .output-container {
   background-color: #00494d;
   border-radius: 10px;
   color: #f4fafa;
-  padding: 20px;
+  padding: 30px;
 }
 
 body .calculator-container .output-container .output-rows {
