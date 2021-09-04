@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+$strong-cyan: hsl(172, 67%, 45%);
+$very-dark-cyan: hsl(183, 100%, 15%);
+$dark-grayish-cyan-2: hsl(186, 14%, 43%);
+$dark-grayish-cyan-1: hsl(184, 14%, 56%);
+$light-grayish-cyan-2: hsl(185, 41%, 84%);
+$light-grayish-cyan-1: hsl(189, 41%, 97%);
+$red: rgb(255, 81, 0);
+$white: hsl(0, 0%, 100%);
+
+@mixin flexbox($direction, $justify, $align, $gap) {
+	display: flex;
+	flex-direction: $direction;
+	justify-content: $justify;
+	align-items: $align;
+	gap: $gap;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+:root {
+	font-size: 14px;
+	font-family: 'Space Mono', monospace;
+}
+
+body {
+	background-color: $light-grayish-cyan-2;
+	min-height: 100vh;
+	margin: 0;
+	padding: 0;
+	@include flexbox(column, center, center, 0);
+
+	.heading {
+		text-transform: uppercase;
+		font-weight: 400;
+		width: 7ch;
+		letter-spacing: 0.5ch;
+		word-wrap: break-word;
+	}
+
+	.calculator-container {
+		max-width: 700px;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		padding: 20px;
+		background-color: $white;
+		border-radius: 10px;
+
+		.input-container {
+			@include flexbox(column, center, stretch, 10px);
+			padding: 20px;
+
+			.input-row {
+				.input-heading {
+					@include flexbox(row, space-between, center, 0);
+					flex-wrap: wrap;
+					font-weight: 700;
+					font-size: 0.8rem;
+					margin-bottom: 5px;
+
+					.input-title {
+						color: $dark-grayish-cyan-2;
+					}
+
+					.error-message {
+						visibility: hidden;
+					}
+				}
+
+				.input-box {
+					position: relative;
+					width: 100%;
+
+					input {
+						background-color: $light-grayish-cyan-1;
+						border-radius: 5px;
+						border: 2px solid $light-grayish-cyan-1;
+						font-size: 1.2rem;
+						font-family: inherit;
+						font-weight: 700;
+						color: $very-dark-cyan;
+						text-align: right;
+						width: 100%;
+						padding-right: 1ch;
+						outline: none;
+					}
+
+					.symbol {
+						position: absolute;
+						top: 0;
+						left: 0;
+						height: 100%;
+						width: 30px;
+						@include flexbox(row, center, center, 0);
+						color: $dark-grayish-cyan-1;
+						background-repeat: no-repeat;
+						background-position: center;
+
+						&.dollar-icon {
+							background-image: url('./images/icon-dollar.svg');
+						}
+
+						&.person-icon {
+							background-image: url('./images/icon-person.svg');
+						}
+					}
+				}
+
+				.tip-options-grid {
+					display: grid;
+					grid-template-columns: repeat(3, 1fr);
+
+					.tip-option {
+						padding: 5px 0;
+						background-color: $very-dark-cyan;
+						color: $white;
+						border: 2px solid $white;
+						border-radius: 5px;
+						font-size: 1.2rem;
+						font-weight: 700;
+						@include flexbox(row, center, center, 0);
+
+						&:hover {
+							cursor: pointer;
+							background-color: $strong-cyan;
+							color: $very-dark-cyan;
+						}
+
+						&.checked {
+							background-color: $strong-cyan;
+							color: $very-dark-cyan;
+						}
+
+						input {
+							display: none;
+						}
+
+						&:last-child {
+							background-color: $light-grayish-cyan-1;
+
+							input {
+								display: initial;
+								width: 100%;
+								text-align: right;
+								font-family: inherit;
+								font-size: inherit;
+								font-weight: inherit;
+								color: $very-dark-cyan;
+								outline: none;
+								border: none;
+								background-color: inherit;
+
+								&::placeholder {
+									color: $dark-grayish-cyan-2;
+									text-align: center;
+								}
+							}
+						}
+					}
+				}
+
+				&.invalid {
+					.error-message {
+						visibility: visible;
+						color: $red;
+					}
+
+					.validation {
+						border-color: $red;
+					}
+				}
+
+				&.valid {
+					.error-message {
+						visibility: hidden;
+					}
+
+					.validation {
+						border-color: $strong-cyan;
+					}
+				}
+			}
+		}
+
+		.output-container {
+			@include flexbox(column, space-between, stretch, 50px);
+			background-color: $very-dark-cyan;
+			border-radius: 10px;
+			color: $light-grayish-cyan-1;
+			padding: 20px;
+
+			.output-rows {
+				@include flexbox(column, center, stretch, 20px);
+				.output-row {
+					@include flexbox(row, space-between, center, 0);
+
+					.output-title {
+						span {
+							display: block;
+							color: $dark-grayish-cyan-1;
+						}
+					}
+
+					.output-number {
+						color: $strong-cyan;
+						font-size: 2rem;
+						font-weight: 700;
+					}
+				}
+			}
+
+			.reset-btn {
+				background-color: $strong-cyan;
+				border-radius: 5px;
+				color: $very-dark-cyan;
+				width: 100%;
+				text-align: center;
+				font-weight: 700;
+				text-transform: uppercase;
+				padding: 10px 0;
+
+				&:hover {
+					cursor: pointer;
+					background-color: $dark-grayish-cyan-2;
+					color: $white;
+				}
+			}
+		}
+	}
+
+	.attribution {
+		margin-top: 50px;
+	}
+}
+
+@media (max-width: 500px) {
+	body {
+		@include flexbox(column, flex-start, center, 0);
+
+		.calculator-container {
+			width: 100%;
+			display: initial;
+
+			.input-container .input-row .tip-options-grid {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
+	}
+}
