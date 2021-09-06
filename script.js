@@ -39,11 +39,8 @@ function validateTip() {
 		return true;
 	} else {
 		const tipCustom = tipOptionCustomElement.querySelector('input').value.trim();
-		if (/^0+$/.test(tipCustom)) {
-			displayInvalid(tipOptionCustomElement, 'Cannot be 0');
-			return false;
-		}
-		if (/^(?!0+)\d+$/.test(tipCustom)) {
+		if (tipCustom === '') return true;
+		else if (/^(?!0+)\d+$/.test(tipCustom)) {
 			displayValid(tipOptionCustomElement);
 			return true;
 		} else {
@@ -73,7 +70,7 @@ function calculate() {
 	const peopleNumber = parseInt(peopleNumberElement.value);
 	const tip = getTipValue();
 
-	if (isNaN(bill) || isNaN(peopleNumber) || tip === 0) return;
+	if (isNaN(bill) || isNaN(peopleNumber)) return;
 	if (validateBill() && validateTip() && validatePeopleNumber()) {
 		tipAmountElement.innerText = ((bill * tip) / peopleNumber).toFixed(2);
 		totalAmountElement.innerText = ((bill * (1 + tip)) / peopleNumber).toFixed(2);
